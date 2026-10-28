@@ -436,3 +436,9 @@ button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padd
 /* Logo Rodaracing de la pantalla inicial: tamaño equilibrado */
 .home-view .home-hero img.home-racing-logo{width:min(1100px,76vw)}
 @media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:92vw}}
+
+
+/* Acceso visible a la administración segura de cuentas. */
+.account-settings-link{display:inline-flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap;padding:8px 11px}
+.account-settings-link span:first-child{font-size:18px;line-height:1}
+@media(max-width:600px){.account-settings-link{gap:4px;padding:7px 8px;font-size:12px}}

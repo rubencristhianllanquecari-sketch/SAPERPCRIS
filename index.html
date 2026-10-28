@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1268dc">
+  <title>LLANQUE — Inventarios y Movimientos (Demo)</title>
+    <link rel="stylesheet" href="venta-demo.css?v=trash-icon">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen">
+    <div class="login-card"><div class="login-head"><div class="login-mark">L</div><h1>SAP LLANQUE</h1><p>Sistema de inventarios</p></div><form id="loginForm" class="login-body"><p id="loginError" class="login-error" role="alert">No se pudo iniciar sesión.</p><div class="field"><label for="loginUser">Correo</label><input id="loginUser" type="email" autocomplete="username" required autofocus placeholder="Ingresa tu correo"></div><div class="field"><label for="loginPassword">Contraseña</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Ingresa tu contraseña"></div><button class="btn btn-blue" style="width:100%;padding:11px" type="submit">Entrar</button><div class="login-hint">Acceso seguro. Los datos se guardan en la base de datos LLANQUE.</div></form></div>
+  </section>
+  <div id="appShell" hidden>
+  <header class="topbar"><div class="brand"><b>L</b> SAP LLANQUE</div><div class="top-right"><span class="pill" id="cloudStatus">Conectando…</span><span class="pill">Dólar : 11,69</span><span class="pill">UFV : 3,3603</span><span>COCHABAMBA</span><button class="btn btn-light" type="button" id="logoutBtn">Salir</button></div></header>
+  <div class="bearing-watermark" aria-hidden="true"></div>
+  <main>
+    <p class="crumb">LLANQUE&nbsp; / &nbsp;<span id="crumbText">Inicio</span></p>
+    <nav class="toolbar module-nav" aria-label="Módulos"><button class="btn btn-light active" data-view="home" type="button">Inicio</button>
+      
+      <div class="nav-dropdown"><button class="btn btn-light nav-dropdown-toggle" type="button" aria-expanded="false">Parámetros <span>▾</span></button><div class="nav-dropdown-menu">
+        <div class="nav-menu-heading">CATÁLOGOS</div><button class="nav-menu-item" data-nav-view="inventory">▦ <span>Productos e inventario</span></button><button class="nav-menu-item" data-nav-view="people">♙ <span>Personas y clientes</span></button>
+        <div class="nav-menu-heading">CONFIGURACIÓN DE PERSONAL</div><button class="nav-menu-item" data-nav-action="employee-codes">♧ <span>Códigos de empleados</span></button><button class="nav-menu-item" data-nav-action="device-code">▣ <span>Código del dispositivo</span></button>
+      </div></div>
+      <div class="nav-dropdown"><button class="btn btn-light nav-dropdown-toggle" type="button" aria-expanded="false">Personal <span>▾</span></button><div class="nav-dropdown-menu">
+        <div class="nav-menu-heading">CONTROL DE ASISTENCIA</div><button class="nav-menu-item" data-nav-view="attendance">◷ <span>Registro de Asistencia</span></button><button class="nav-menu-item" data-nav-action="attendance-report">▤ <span>Reportes de Asistencia</span></button>
+        <div class="nav-menu-heading">NÓMINA</div><button class="nav-menu-item" data-nav-action="payroll">⇩ <span>Descarga de Boletas</span></button>
+        <div class="nav-menu-heading">VACACIONES</div><button class="nav-menu-item" data-nav-action="vacation-request">▣ <span>Solicitar Vacaciones</span></button><button class="nav-menu-item" data-nav-action="vacation-list">▤ <span>Mis Solicitudes</span></button>
+      </div></div>
+      <div class="nav-dropdown"><button class="btn btn-light nav-dropdown-toggle" type="button" aria-expanded="false">Inventarios <span>▾</span></button><div class="nav-dropdown-menu">
+        <div class="nav-menu-heading">INVENTARIO</div><button class="nav-menu-item" data-nav-view="inventory">▦ <span>Productos</span></button><button class="nav-menu-item" data-nav-action="new-stock">⇧ <span>Registrar entrada</span></button><button class="nav-menu-item" data-nav-action="transfer">⇄ <span>Transferencias</span></button>
+        <div class="nav-menu-heading">MOVIMIENTOS</div><button class="nav-menu-item" data-nav-view="sale">⇧ <span>Movimiento</span></button><button class="nav-menu-item" data-nav-view="movements">▤ <span>Historial de movimientos</span></button><button class="nav-menu-item" data-nav-view="kardex">▥ <span>Kardex</span></button>
+      </div></div>
+      <div class="nav-dropdown"><button class="btn btn-light nav-dropdown-toggle" type="button" aria-expanded="false">Servicios <span>▾</span></button><div class="nav-dropdown-menu">
+        <div class="nav-menu-heading">SERVICIOS · </div><button class="nav-menu-item" data-nav-action="service-qr">▦ <span>Cobrar con QR</span></button><button class="nav-menu-item" data-nav-action="service-register">＋ <span>Registrar servicio</span></button><button class="nav-menu-item" data-nav-action="service-history">▤ <span>Historial de servicios</span></button>
+      </div></div>
+      <span class="demo-tag" style="background:#ffffff22;color:white">BASE DE DATOS EN LA NUBE</span>
+    </nav>
+<section id="homeView" class="home-view"><img class="home-bearing-collection" src="rodamientos-extra.png" alt="Colección de rodamientos"><div class="home-hero"><img class="home-racing-logo" src="logo-rodaracing.png" alt="Rodaracing · Potencia, movimiento, confianza"></div><div class="home-bearing-stage" aria-label="Rodamiento 3D girando"><img class="home-bearing-animation" src="rodamiento-inicio-transparente.png" alt="Rodamiento 3D girando sin fondo blanco"></div></section>
+    <div id="saleView" hidden>
+    <section class="card">
+      <div class="heading"><h1>Registrar Movimiento</h1><span class="demo-tag">MODO DEMOSTRACIÓN · GUARDADO LOCAL</span></div>
+      <form id="saleForm" novalidate>
+        <div class="notice" id="notice" role="status"></div>
+        <div class="toolbar"><button class="btn btn-light" type="button" id="historyBtn">Historial de Ventas</button><button class="btn btn-light" type="button" id="downloadSales">Descargar ventas Excel</button><button class="btn btn-light" type="button" id="printBtn">Vista previa / imprimir</button><button class="btn btn-light" type="button" id="newBtn">Nueva venta</button></div>
+        <div class="grid">
+          <div class="field"><label for="date">Fecha</label><input id="date" type="datetime-local" value="2026-10-19T09:00"></div>
+          <div class="field"><label for="warehouse">Almacén</label><select id="warehouse"><option>Cochabamba</option><option>La Paz</option><option>Santa Cruz</option></select></div>
+          <div class="field wide"><label for="clientPickerButton">Cliente</label><div class="actions-inline"><div class="client-picker" id="clientPicker"><select id="client" class="client-picker-native" tabindex="-1" aria-hidden="true"><option value="">Seleccione un cliente...</option></select><button type="button" id="clientPickerButton" class="client-picker-button" aria-haspopup="listbox" aria-expanded="false"><span>Seleccione un cliente...</span><b>▾</b></button><div class="client-picker-menu" id="clientPickerMenu" hidden><input id="clientPickerSearch" type="search" placeholder="Buscar cliente..." autocomplete="off" aria-label="Buscar cliente"><div id="clientPickerOptions" class="client-picker-options" role="listbox"></div></div></div><button type="button" class="icon-btn" id="newClientBtn" title="Crear cliente demo" aria-label="Crear cliente">＋</button><button type="button" class="icon-btn edit" id="editClientBtn" title="Editar cliente demo" aria-label="Editar cliente">✎</button></div></div>
+          <div class="field wide"><label for="payment">Método de pago</label><select id="payment"><option>Efectivo</option><option>QR</option><option>Tarjeta</option><option>Transferencia bancaria</option><option>Billetera móvil</option><option>Cheque</option><option>Pago posterior</option><option>Otro</option><option>Mixto</option></select></div>
+          <div class="field"><label for="paymentForm">Forma de pago</label><select id="paymentForm"><option>Contado</option><option>Crédito</option></select></div>
+          <div class="field full credit-fields" id="creditFields"><div class="grid"><div class="field"><label for="dueDate">Fecha de vencimiento</label><input id="dueDate" type="date"></div><div class="field"><label for="installments">Número de cuotas</label><input id="installments" type="number" min="1" value="1"></div><div class="field"><label for="downPayment">Anticipo (Bs.)</label><input id="downPayment" type="number" min="0" step="0.01" value="0"></div></div></div>
+          <div class="field"><label for="discount">Descuento adicional</label><div class="input-group"><i>Bs.</i><input id="discount" type="number" min="0" step="0.01" value="0"></div><div class="hint">Monto fijo aplicado al total</div></div>
+          <div class="field full"><label for="notes">Observaciones</label><textarea id="notes" placeholder="Notas de la venta (opcional)"></textarea></div>
+        </div>
+        <div class="section-title"><span>Productos del Movimiento</span><button class="btn btn-green" type="button" id="addProduct">Buscar Productos</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Código</th><th>Producto</th><th>U.M.</th><th class="num">Cantidad</th><th class="num">Precio Unit.</th><th class="num">Descuento</th><th class="num">Subtotal</th><th class="num">Total</th><th class="num">Stock</th><th></th></tr></thead><tbody id="products"></tbody></table></div>
+        <div id="mixedPayment" hidden><div class="section-title"><span>Distribución del pago</span><button type="button" class="btn btn-light" id="addPayLine">＋ Añadir medio</button></div><div class="pay-lines" id="payLines"></div><p class="hint" id="paymentBalance">Asigna importes que completen el total.</p></div>
+        <div class="totals"><div class="total-row"><span>Subtotal</span><strong id="subtotal">Bs. 0,00</strong></div><div class="total-row"><span>Descuento en productos</span><strong id="discounts">Bs. 0,00</strong></div><div class="total-row"><span>Descuento adicional</span><strong id="extraDiscount">Bs. 0,00</strong></div><div class="total-row grand"><span>Total a pagar</span><strong id="total">Bs. 0,00</strong></div></div>
+        <div class="footer"><span class="footer-note">Ventas sincronizadas con la base de datos LLANQUE.</span><div class="button-row"><button class="btn btn-light" type="button" id="clearBtn">Limpiar</button><button class="btn btn-red" type="button" id="cancel">Cancelar</button><button class="btn btn-green" type="button" id="saveSaleButton">Guardar venta y generar recibo</button></div></div>
+      </form>
+    </section>
+    </div>
+    <section class="card module-view" id="inventoryView" hidden>
+      <div class="heading"><h1>Inventario de Productos</h1><span class="demo-tag">STOCK LOCAL DE DEMOSTRACIÓN</span></div>
+      <div style="padding:20px"><div class="summary-grid"><div class="summary-card"><span>PRODUCTOS EN CATÁLOGO</span><strong id="inventoryProductCount">0</strong><small>Productos de muestra disponibles</small></div><div class="summary-card"><span>UNIDADES EN STOCK</span><strong id="inventoryUnitCount">0</strong><small>Existencias ficticias acumuladas</small></div><div class="summary-card"><span>PRODUCTOS SIN STOCK</span><strong id="inventoryEmptyCount">0</strong><small>Revisa las existencias </small></div></div><div class="toolbar"><input id="inventorySearch" type="search" placeholder="Buscar por código o producto" style="max-width:340px"><select id="stockFilter" style="max-width:210px"><option value="all">Todos los productos</option><option value="available">Con stock</option><option value="empty">Sin stock</option></select><button class="btn btn-blue" id="refreshInventory">Actualizar</button><button class="btn btn-light" id="downloadInventory">Descargar inventario Excel</button><button class="btn btn-light" id="backupData">Respaldar datos</button><button class="btn btn-light" id="restoreData">Restaurar respaldo</button><input id="restoreDataFile" type="file" accept="application/json,.json" hidden><button class="btn btn-light" id="newCatalogProduct">Nuevo producto </button><button class="btn btn-green" id="newStockEntry">Registrar entrada </button></div><p class="hint">Ventas y productos se guardan en este navegador. Descarga un respaldo con frecuencia y guárdalo fuera de esta carpeta.</p>
+      <div class="table-wrap"><table style="min-width:700px"><thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Unidad</th><th class="num">Precio venta</th><th class="num">Stock</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="inventoryRows"></tbody></table></div><p class="hint">El stock se modifica únicamente en esta demostración local al registrar entradas o salidas demo.</p></div>
+    </section>
+    <section class="card module-view" id="movementsView" hidden>
+      <div class="heading"><h1>Movimientos de Inventario</h1><span class="demo-tag">HISTORIAL LOCAL</span></div>
+      <div style="padding:20px">
+        <nav class="toolbar movement-shortcuts" aria-label="Accesos de movimientos"><button class="btn btn-green" id="movementCreateSale">＋ Crear Venta </button><button class="btn btn-light" id="dailySalesReport">▤ Ventas Diarias</button><div class="nav-dropdown treasury-dropdown"><button class="btn btn-blue nav-dropdown-toggle" type="button" aria-expanded="false">▣ Tesorería <span>▾</span></button><div class="nav-dropdown-menu"><button class="nav-menu-item" id="openTreasuryEntry" type="button">▤ <span>Asiento de Tesorería</span></button><button class="nav-menu-item" id="openTreasuryReport" type="button">⌁ <span>Reporte de Tesorería</span></button></div></div><button class="btn btn-light" id="cashDeskInfo">▣ Apertura / Cierre Caja</button><button class="btn btn-light" id="movementKardex">▥ Kardex</button><button class="btn btn-light" id="newTransfer">⇄ Transferencias</button><button class="btn btn-green" id="newMovement">＋ Nuevo movimiento </button></nav>
+        <div class="grid movement-filters"><div class="field"><label for="movementTypeFilter">Tipo de Movimiento</label><select id="movementTypeFilter"><option value="all">Todos</option><option>Entrada por Compra</option><option>Salida por Venta</option><option>Ajuste</option><option>Ajuste por Sobrante</option><option>Devolución Compra</option><option>Devolución Venta</option><option>Transferencia Entrada</option><option>Transferencia Salida</option><option>Inventario Inicial</option></select></div><div class="field"><label for="movementUserFilter">Usuario</label><select id="movementUserFilter"><option value="all">Todos</option><option>LLANQUE (DEMO)</option></select></div><div class="field"><label for="movementStatusFilter">Estado</label><select id="movementStatusFilter"><option value="all">Todos</option><option>Activo</option><option>Anulado</option></select></div><div class="field"><label for="movementDateStart">Fecha Inicio</label><input id="movementDateStart" type="date"></div><div class="field"><label for="movementDateEnd">Fecha Fin</label><input id="movementDateEnd" type="date"></div><div class="field movement-filter-actions"><label>&nbsp;</label><div class="toolbar"><button class="btn btn-blue" id="searchMovements">⌕ Buscar</button><button class="btn btn-light" id="clearMovements">Limpiar</button></div></div></div>
+        <div class="movement-table-controls"><label>Mostrar <select id="movementPageSize"><option>10</option><option selected>25</option><option>50</option><option>100</option></select> registros</label><label>Buscar: <input id="movementSearch" type="search" placeholder="Buscar en movimientos"></label></div>
+        <div class="table-wrap"><table class="movement-table"><thead><tr><th><button type="button" data-sort="id">Documento ↕</button></th><th><button type="button" data-sort="type">Tipo ↕</button></th><th><button type="button" data-sort="date">Fecha ↕</button></th><th><button type="button" data-sort="warehouse">Almacén ↕</button></th><th><button type="button" data-sort="client">Cliente/Proveedor ↕</button></th><th><button type="button" data-sort="invoice">N° Factura ↕</button></th><th><button type="button" data-sort="items">Ítems ↕</button></th><th><button type="button" data-sort="total">Total ↕</button></th><th><button type="button" data-sort="user">Usuario ↕</button></th><th><button type="button" data-sort="status">Estado ↕</button></th><th>Acciones</th></tr></thead><tbody id="movementRows"></tbody></table></div>
+        <div class="movement-table-footer"><p class="hint" id="movementCount">0 registros demo</p><div class="movement-pagination"><button class="btn btn-light" id="movementPrev">Anterior</button><span id="movementPageLabel">Página 0 de 0</span><button class="btn btn-light" id="movementNext">Siguiente</button></div></div>
+        <button class="btn btn-light" id="downloadPurchases">Descargar compras Excel</button><button class="btn btn-light" id="downloadMovementSales">Descargar ventas Excel</button><p class="hint">Movimientos ficticios guardados solo en este navegador. La tabla empieza vacía hasta que registres algo en la demo.</p>
+      </div>
+    </section>
+    <section class="card module-view" id="peopleView" hidden>
+      <div class="heading"><h1>Personas / Clientes</h1><span class="demo-tag">CONTACTOS LOCALES DE DEMOSTRACIÓN</span></div>
+      <div class="people-content">
+        <div class="people-toolbar"><label>Mostrar <select id="peoplePageSize"><option>10</option><option>25</option><option>50</option><option>100</option></select> registros</label><label>Buscar: <input id="peopleSearch" type="search" placeholder="Buscar personas"></label><button class="btn btn-light" id="downloadPeople">⇩ Descargar Excel</button><button class="btn btn-green" id="newPerson">＋ Nuevo Cliente demo</button></div>
+        <div class="table-wrap"><table class="people-table"><thead><tr><th>Nombre</th><th>Documento</th><th>Tipo Doc.</th><th>Teléfono</th><th>Email</th><th>Dirección</th><th>CI</th><th>Acciones</th></tr></thead><tbody id="peopleRows"></tbody></table></div>
+        <div class="people-footer"><span class="hint" id="peopleCount">0 registros demo</span><div class="movement-pagination"><button class="btn btn-light" id="peoplePrev">Anterior</button><span id="peoplePageLabel">Página 0 de 0</span><button class="btn btn-light" id="peopleNext">Siguiente</button></div></div>
+        <p class="hint">Personas y contactos ficticios guardados únicamente en este navegador.</p>
+      </div>
+    </section>
+    <section class="card module-view attendance-module" id="attendanceView" hidden>
+      <div class="attendance-demo-card">
+        <div class="attendance-title"><span aria-hidden="true">⏰</span><div><h1>Asistencia</h1><p>Registre su entrada y salida</p><small class="attendance-deadline">Puntualidad demo: hasta las 08:00</small></div></div>
+        <div class="attendance-clock"><span>HORA ACTUAL</span><strong id="attendanceClock">--:--:--</strong></div>
+        <div class="attendance-fields">
+          <div class="field"><div class="attendance-label-row"><label for="attendanceEmployeeCode">Código de Empleado</label><button class="mini-action" id="createEmployeeCode" type="button">Gestionar códigos</button></div><div class="attendance-code-control"><input id="attendanceEmployeeCode" type="text" list="employeeCodeOptions" placeholder="Ej: E001" autocomplete="off"><button class="code-visibility" id="toggleEmployeeCode" type="button" aria-label="Ocultar código de empleado" aria-pressed="true" title="Ocultar código">◉</button></div><datalist id="employeeCodeOptions"></datalist></div>
+          <div class="field"><div class="attendance-label-row"><label for="attendanceDeviceCode">Código del Dispositivo</label><button class="mini-action" id="configureDeviceCode" type="button">Editar / borrar</button></div><div class="attendance-code-control"><input id="attendanceDeviceCode" type="text" value="LLANQUE-DEMO-01"><button class="code-visibility" id="toggleDeviceCode" type="button" aria-label="Ocultar código del dispositivo" aria-pressed="true" title="Ocultar código">◉</button></div><small>Puedes editar este código</small></div>
+          <button class="btn attendance-entry" id="registerAttendanceEntry" type="button">➡️ Registrar Entrada</button>
+          <button class="btn attendance-exit" id="registerAttendanceExit" type="button">⬅️ Registrar Salida</button>
+          <div class="attendance-feedback" id="attendanceFeedback" role="status" aria-live="polite" hidden></div>
+          <p class="attendance-note">Registro de demostración: se guarda únicamente en este navegador.</p>
+        </div>
+      </div>
+    </section>
+    <section class="card module-view" id="kardexView" hidden>
+      <div class="heading"><h1>Kardex de Inventario</h1><span class="demo-tag">MOVIMIENTOS LOCALES DE DEMOSTRACIÓN</span></div>
+      <div style="padding:18px"><div class="toolbar"><select id="kardexProduct" style="max-width:360px"></select><button class="btn btn-blue" id="searchKardex">Consultar</button><button class="btn btn-light" id="clearKardex">Limpiar</button></div><div class="table-wrap"><table style="min-width:720px"><thead><tr><th>Fecha</th><th>Documento</th><th>Tipo</th><th class="num">Entrada</th><th class="num">Salida</th><th class="num">Saldo</th></tr></thead><tbody id="kardexRows"></tbody></table></div></div>
+    </section>
+  </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="dialog"><div class="dialog-head"><h2 id="modalTitle">Demostración</h2><button class="icon-btn" type="button" id="closeModal" aria-label="Cerrar">×</button></div><div class="dialog-body" id="modalBody"></div></div></div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-cloud.js"></script>
+    <script src="venta-demo.js"></script>
+</body>
+</html>
+

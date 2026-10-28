@@ -1,0 +1,41 @@
+LLANQUE - CONEXIÓN CON SUPABASE
+
+La página ahora usa Supabase para compartir el estado de sus módulos entre navegadores.
+Los datos se guardan como registros JSON en la tabla public.llanque_app_state.
+
+CONFIGURACIÓN NECESARIA (UNA SOLA VEZ)
+1. En Supabase, abre Editor SQL, crea una consulta nueva, abre supabase-setup.sql,
+   copia su contenido, pégalo en el editor y pulsa Run. Se puede ejecutar otra vez.
+2. En Supabase > Authentication > Users, agrega manualmente el usuario dueño con correo
+   y contraseña. Desactiva el registro público en Authentication > Settings para que
+   solo puedan entrar las cuentas que tú agregues desde el panel.
+3. Abre index.html desde un alojamiento web o servidor local; evita abrirlo con file://.
+4. Inicia sesión con el correo y contraseña creados en Supabase.
+
+La URL y publishable key están en supabase-config.js. La publishable key está diseñada
+para el navegador; el acceso depende de Supabase Auth y las políticas RLS. Nunca pongas
+una secret key ni service_role en estos archivos.
+
+IMPORTACIÓN INICIAL
+Si ya había datos LLANQUE guardados en ese mismo navegador y la tabla en la nube está
+vacía, el primer inicio de sesión los copia a Supabase. Si la nube ya contiene datos,
+estos reemplazan el estado local para evitar mezclar dos copias distintas.
+
+IMPORTANTE
+- Agrega empleados desde Authentication > Users; las cuentas creadas allí comparten
+  los datos de esta instalación.
+- Esta conexión sincroniza el estado actual de la aplicación como JSONB. Las tablas
+  clientes, productos y ventas del SQL inicial no son las tablas que usa el guardado
+  de esta versión.
+- Descarga respaldos periódicos desde Inventario > Respaldar datos.
+- El QR de cobro y el recibo no verifican automáticamente un pago bancario.
+
+TESORERÍA
+Los asientos de Tesorería se guardan como JSON en la clave llanque-demo-treasury y se sincronizan con public.llanque_app_state al iniciar sesión. El botón Guardar Asiento espera la confirmación de Supabase; si no llega, el registro se conserva localmente y la página muestra una advertencia. No requiere tablas SQL adicionales. Las cuentas y sus presupuestos del formulario son datos de ejemplo; configúralos con el plan contable real antes de usarlo en producción.
+
+
+APERTURA / CIERRE DE CAJA
+El historial de cajas se guarda bajo la clave llanque-demo-cash-sessions y se sincroniza con public.llanque_app_state al confirmar una apertura o cierre. El conteo de denominaciones es una captura manual; esta demo no lo concilia automáticamente con ventas, cobros ni bancos.
+
+En Tesorería, cada asiento de egreso se presenta en el reporte en doble partida: Debe en la cuenta de gasto seleccionada y Haber en Caja Cochabamba (1101001004).
+

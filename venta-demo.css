@@ -432,3 +432,7 @@ body:has(#homeView:not([hidden])) .bearing-watermark{display:none}
 .home-view .home-hero img.home-racing-logo{display:block;width:min(1600px,88vw);height:auto;max-height:none;object-fit:contain;background:transparent;border:0;border-radius:0;box-shadow:none;filter:none}
 @media(max-width:600px){.home-view{min-height:calc(100vh - 190px)}.home-view .home-hero img.home-racing-logo{width:88vw}}
 button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--red);font-size:0;cursor:pointer;transition:background .15s,color .15s}button.remove:hover{background:#fff0f1;color:#9d2632}button.remove .trash-icon{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Logo Rodaracing de la pantalla inicial: tamaño equilibrado */
+.home-view .home-hero img.home-racing-logo{width:min(1100px,76vw)}
+@media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:92vw}}

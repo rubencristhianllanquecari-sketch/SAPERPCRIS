@@ -447,3 +447,9 @@ button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padd
 /* Tamaño equilibrado para el logo de la pantalla inicial. */
 .home-view .home-hero img.home-racing-logo{width:min(780px,70vw);max-width:100%}
 @media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:min(88vw,620px)}}
+
+
+/* Inicio alineado y logo con tamaño constante en pantallas grandes. */
+main:has(#homeView:not([hidden])){max-width:none;width:100%;margin-left:0;margin-right:0;padding-left:18px;padding-right:18px}
+.home-view .home-hero img.home-racing-logo{width:min(620px,70vw);max-width:100%}
+@media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:min(88vw,620px)}}

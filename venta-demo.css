@@ -434,8 +434,8 @@ body:has(#homeView:not([hidden])) .bearing-watermark{display:none}
 button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padding:0;border:0;border-radius:7px;background:transparent;color:var(--red);font-size:0;cursor:pointer;transition:background .15s,color .15s}button.remove:hover{background:#fff0f1;color:#9d2632}button.remove .trash-icon{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
 /* Logo Rodaracing de la pantalla inicial: tamaño equilibrado */
-.home-view .home-hero img.home-racing-logo{width:min(780px,70vw)}
-@media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:min(88vw,620px)}}
+.home-view .home-hero img.home-racing-logo{width:min(1100px,76vw)}
+@media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:92vw}}
 
 
 /* Acceso visible a la administración segura de cuentas. */
@@ -443,3 +443,7 @@ button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padd
 .account-settings-link span:first-child{font-size:18px;line-height:1}
 @media(max-width:600px){.account-settings-link{gap:4px;padding:7px 8px;font-size:12px}}
 
+
+/* Tamaño equilibrado para el logo de la pantalla inicial. */
+.home-view .home-hero img.home-racing-logo{width:min(780px,70vw);max-width:100%}
+@media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:min(88vw,620px)}}

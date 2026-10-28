@@ -299,3 +299,7 @@ function showServiceDetail(record,onBack){if(!record)return;openModal(`Servicio 
 
 // Enlace protegido a la administración de usuarios y contraseñas.
 (()=>{const logout=document.querySelector('#logoutBtn');if(!logout||document.querySelector('#accountSettingsLink'))return;const link=document.createElement('a');link.id='accountSettingsLink';link.className='btn btn-light account-settings-link';link.href='https://supabase.com/dashboard/project/bwrdebzsceygaivtacen/auth/users';link.target='_blank';link.rel='noopener noreferrer';link.title='Administrar cuentas y contraseñas';link.setAttribute('aria-label','Configuración: administrar cuentas y contraseñas');link.innerHTML='<span aria-hidden="true">⚙</span><span>Accesos</span>';logout.before(link)})();
+
+
+// Ubica la configuración de contraseñas debajo de Historial de servicios.
+(()=>{document.querySelector('#accountSettingsLink')?.remove();const history=document.querySelector('[data-nav-action="service-history"]');if(!history||document.querySelector('#accountSettingsMenuItem'))return;const button=document.createElement('button');button.type='button';button.id='accountSettingsMenuItem';button.className='nav-menu-item';button.title='Administrar cuentas y contraseñas';button.innerHTML='⚙ <span>Configuración de contraseñas</span>';button.addEventListener('click',()=>window.open('https://supabase.com/dashboard/project/bwrdebzsceygaivtacen/auth/users','_blank','noopener,noreferrer'));history.after(button)})();

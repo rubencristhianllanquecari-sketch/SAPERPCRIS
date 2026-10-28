@@ -295,3 +295,7 @@ function showServiceHistory(){
  };draw();
 }
 function showServiceDetail(record,onBack){if(!record)return;openModal(`Servicio ${record.id}`,`<div class="service-detail"><p><b>Fecha:</b> ${escapeHtml(record.date)}<br><b>Cliente:</b> ${escapeHtml(record.client||'—')}<br><b>Descripción:</b> ${escapeHtml(record.description)}<br><b>Monto:</b> ${treasuryMoney(record.amount)}<br><b>Estado:</b> ${escapeHtml(record.status)}<br><b>Observaciones:</b> ${escapeHtml(record.notes||'—')}<br><b>Usuario:</b> ${escapeHtml(record.user||'LLANQUE (DEMO)')}</p><div class="dialog-actions"><button class="btn btn-light" id="serviceDetailBack" type="button">Volver</button><button class="btn btn-blue" id="serviceDetailClose" type="button">Cerrar</button></div></div>`);document.querySelector('#serviceDetailBack').onclick=onBack;document.querySelector('#serviceDetailClose').onclick=closeModal}
+
+
+// Enlace protegido a la administración de usuarios y contraseñas.
+(()=>{const logout=document.querySelector('#logoutBtn');if(!logout||document.querySelector('#accountSettingsLink'))return;const link=document.createElement('a');link.id='accountSettingsLink';link.className='btn btn-light account-settings-link';link.href='https://supabase.com/dashboard/project/bwrdebzsceygaivtacen/auth/users';link.target='_blank';link.rel='noopener noreferrer';link.title='Administrar cuentas y contraseñas';link.setAttribute('aria-label','Configuración: administrar cuentas y contraseñas');link.innerHTML='<span aria-hidden="true">⚙</span><span>Accesos</span>';logout.before(link)})();

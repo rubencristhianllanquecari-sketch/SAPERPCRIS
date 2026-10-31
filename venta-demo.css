@@ -498,3 +498,9 @@ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-v
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:50%;bottom:auto!important;right:clamp(14px,4vw,56px)!important;transform:translateY(-50%);width:min(250px,20vw)!important;height:min(185px,22vh)!important;background:transparent!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{background:transparent!important;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 8px 12px #00173555)}
 @media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto;bottom:clamp(24px,8vh,72px)!important;right:8px!important;transform:none;width:min(145px,35vw)!important;height:min(110px,15vh)!important}}
+
+
+/* Video alineado con los rodamientos y sin placa blanca. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(10px,2.5vh,24px)!important;transform:none!important;right:clamp(14px,4vw,56px)!important;width:min(250px,20vw)!important;height:min(185px,22vh)!important;background:transparent!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{background:transparent!important;mix-blend-mode:multiply!important;object-fit:contain}
+@media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{bottom:8px!important;right:8px!important;width:min(145px,35vw)!important;height:min(110px,15vh)!important}}

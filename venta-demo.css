@@ -481,3 +481,14 @@ body:has(#homeView:not([hidden])) .home-bearing-collection,body:has(#homeView:no
 @media(max-width:760px){body:has(#homeView:not([hidden])) #appShell>.topbar{height:56px;padding:0 10px}body:has(#homeView:not([hidden])) .brand{font-size:14px}body:has(#homeView:not([hidden])) .brand b{width:30px;height:30px}body:has(#homeView:not([hidden])) .top-right{gap:5px}body:has(#homeView:not([hidden])) .top-right .pill,body:has(#homeView:not([hidden])) .top-right>span:not(.pill){display:none}body:has(#homeView:not([hidden])) main{padding:8px 10px 0}body:has(#homeView:not([hidden])) .module-nav{position:relative;top:auto;left:auto;width:100%;max-width:100%;margin:0 0 8px;overflow-x:auto!important;flex-wrap:nowrap}body:has(#homeView:not([hidden])) .module-nav .btn{padding:8px 9px}body:has(#homeView:not([hidden])) .home-view{height:calc(100vh - 112px);min-height:400px;padding:15px 8px;gap:18px}body:has(#homeView:not([hidden])) .home-view .home-hero img.home-racing-logo{width:min(430px,78vw)}}
 
 body:has(#homeView:not([hidden])) #appShell>main{z-index:9}
+
+
+/* Rodamientos a la izquierda y video corto a la derecha en la portada. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-collection{display:block!important;position:absolute;z-index:2;left:clamp(14px,3vw,42px);bottom:clamp(10px,2.5vh,24px);width:min(310px,23vw);height:min(190px,22vh);object-fit:contain;object-position:left bottom;opacity:.97}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{display:grid!important;position:absolute;z-index:2;right:clamp(12px,3vw,40px);bottom:clamp(12px,3vh,28px);width:min(270px,22vw);height:min(190px,23vh);aspect-ratio:auto}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-animation{display:none!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{display:block;width:100%;height:100%;object-fit:contain;background:transparent;filter:drop-shadow(0 8px 12px #00173555)}
+@media(max-width:760px){
+ body:has(#homeView:not([hidden])) .home-view .home-bearing-collection{left:6px;bottom:8px;width:min(160px,39vw);height:min(120px,16vh)}
+ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{right:5px;bottom:8px;width:min(145px,36vw);height:min(110px,15vh)}
+}

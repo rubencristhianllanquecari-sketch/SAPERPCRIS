@@ -492,3 +492,9 @@ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-v
  body:has(#homeView:not([hidden])) .home-view .home-bearing-collection{left:6px;bottom:8px;width:min(160px,39vw);height:min(120px,16vh)}
  body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{right:5px;bottom:8px;width:min(145px,36vw);height:min(110px,15vh)}
 }
+
+
+/* Sube el video decorativo y conserva el fondo transparente. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:50%;bottom:auto!important;right:clamp(14px,4vw,56px)!important;transform:translateY(-50%);width:min(250px,20vw)!important;height:min(185px,22vh)!important;background:transparent!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{background:transparent!important;object-fit:contain;mix-blend-mode:screen;filter:drop-shadow(0 8px 12px #00173555)}
+@media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto;bottom:clamp(24px,8vh,72px)!important;right:8px!important;transform:none;width:min(145px,35vw)!important;height:min(110px,15vh)!important}}

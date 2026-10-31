@@ -453,3 +453,29 @@ button.remove{display:inline-grid;place-items:center;width:30px;height:30px;padd
 main:has(#homeView:not([hidden])){max-width:none;width:100%;margin-left:0;margin-right:0;padding-left:18px;padding-right:18px}
 .home-view .home-hero img.home-racing-logo{width:min(620px,70vw);max-width:100%}
 @media(max-width:600px){.home-view .home-hero img.home-racing-logo{width:min(88vw,620px)}}
+
+
+/* Inicio ERP: navegación superior compacta, fondo azul y marca centrada. */
+body:has(#homeView:not([hidden])){overflow-x:hidden;background:linear-gradient(116deg,#061f4c 0%,#0755ae 54%,#1673cc 100%)}
+body:has(#homeView:not([hidden])):before{z-index:0;opacity:1;background:repeating-linear-gradient(119deg,transparent 0 72px,#ffffff20 73px,#ffffff20 74px,transparent 75px 145px);background-size:145px 80px}
+body:has(#homeView:not([hidden])) #appShell{position:relative;min-height:100vh}
+body:has(#homeView:not([hidden])) #appShell>.topbar{height:56px;padding:0 12px;background:linear-gradient(108deg,#0a2856f5,#1768bdf5);color:#f5f8ff;border:0;border-bottom:1px solid #a6cfff55;border-radius:0;box-shadow:0 5px 20px #031a3c30;z-index:8}
+body:has(#homeView:not([hidden])) .brand{font-size:16px;letter-spacing:.2px;color:#fff;white-space:nowrap}
+body:has(#homeView:not([hidden])) .brand b{width:34px;height:34px;margin-right:7px;border:1px solid #ffffff4a;border-radius:8px;background:linear-gradient(140deg,#128af2,#10376f 55%,#d43552);box-shadow:0 3px 9px #001c4560}
+body:has(#homeView:not([hidden])) .top-right{gap:8px;color:#f5f8ff;font-size:11px;white-space:nowrap}
+body:has(#homeView:not([hidden])) .top-right .pill{padding:5px 9px;background:#ffffff16;border-color:#ffffff27;color:#edf5ff;font-size:11px}
+body:has(#homeView:not([hidden])) .topbar .btn.btn-light{padding:6px 10px;background:#ffffff16;border-color:#ffffff3c;color:#fff;box-shadow:none}
+body:has(#homeView:not([hidden])) main{width:100%;max-width:none;margin:0;padding:0;z-index:1}
+body:has(#homeView:not([hidden])) .crumb{display:none}
+body:has(#homeView:not([hidden])) .module-nav{position:absolute;z-index:10;top:-49px;left:205px;display:flex;align-items:center;gap:2px;width:auto;max-width:calc(100vw - 650px);padding:0;background:transparent;border:0;border-radius:0;box-shadow:none;backdrop-filter:none;overflow:visible!important}
+body:has(#homeView:not([hidden])) .module-nav .btn{padding:8px 9px;border:0;border-radius:6px;background:transparent;color:#f5f8ff;font-size:12px;white-space:nowrap;box-shadow:none}
+body:has(#homeView:not([hidden])) .module-nav .btn.active{background:#ffffff20;color:#fff;box-shadow:inset 0 -2px #8fc6ff}
+body:has(#homeView:not([hidden])) .module-nav .btn:not(.active):hover{background:#ffffff18;transform:none}
+body:has(#homeView:not([hidden])) .module-nav .demo-tag{margin-left:6px;padding:5px 9px;border:1px solid #ffffff55;border-radius:99px;font-size:9px}
+body:has(#homeView:not([hidden])) .home-view{width:100%;height:calc(100vh - 56px);min-height:560px;margin:0;padding:24px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;overflow:hidden;border:0;border-radius:0;background:transparent;box-shadow:none}
+body:has(#homeView:not([hidden])) .home-view:before{content:"Sistema ERP";position:relative;inset:auto;z-index:1;display:block;flex:none;color:#fff;font:700 clamp(28px,3vw,40px)/1.15 Georgia,"Times New Roman",serif;text-align:center;text-shadow:0 3px 12px #001d4c75;letter-spacing:.3px;opacity:1;background:none;pointer-events:none}
+body:has(#homeView:not([hidden])) .home-hero{width:auto;max-width:100%;transform:none}
+body:has(#homeView:not([hidden])) .home-view .home-hero img.home-racing-logo{width:min(470px,48vw);max-width:100%;height:auto;filter:drop-shadow(0 12px 18px #001a3d42)}
+body:has(#homeView:not([hidden])) .home-bearing-collection,body:has(#homeView:not([hidden])) .home-bearing-stage{display:none}
+@media(max-width:1120px){body:has(#homeView:not([hidden])) .module-nav{left:188px;max-width:calc(100vw - 500px)}body:has(#homeView:not([hidden])) .module-nav .demo-tag{display:none}body:has(#homeView:not([hidden])) .top-right .pill:not(:first-child){display:none}}
+@media(max-width:760px){body:has(#homeView:not([hidden])) #appShell>.topbar{height:56px;padding:0 10px}body:has(#homeView:not([hidden])) .brand{font-size:14px}body:has(#homeView:not([hidden])) .brand b{width:30px;height:30px}body:has(#homeView:not([hidden])) .top-right{gap:5px}body:has(#homeView:not([hidden])) .top-right .pill,body:has(#homeView:not([hidden])) .top-right>span:not(.pill){display:none}body:has(#homeView:not([hidden])) main{padding:8px 10px 0}body:has(#homeView:not([hidden])) .module-nav{position:relative;top:auto;left:auto;width:100%;max-width:100%;margin:0 0 8px;overflow-x:auto!important;flex-wrap:nowrap}body:has(#homeView:not([hidden])) .module-nav .btn{padding:8px 9px}body:has(#homeView:not([hidden])) .home-view{height:calc(100vh - 112px);min-height:400px;padding:15px 8px;gap:18px}body:has(#homeView:not([hidden])) .home-view .home-hero img.home-racing-logo{width:min(430px,78vw)}}

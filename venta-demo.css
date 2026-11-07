@@ -516,3 +516,10 @@ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-v
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{isolation:auto!important;overflow:visible!important;background:transparent!important;box-shadow:none!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage::before{display:none!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{display:block!important;isolation:auto!important;opacity:1!important;mix-blend-mode:screen!important;background:transparent!important;object-fit:contain!important;filter:drop-shadow(0 8px 12px #00173555)!important}
+
+
+/* Video al nivel de los rodamientos; el fondo oscuro se integra con la portada. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(12px,2.5vh,24px)!important;right:clamp(18px,3vw,42px)!important;transform:none!important;width:min(230px,19vw)!important;height:min(170px,20vh)!important;display:grid!important;place-items:center!important;overflow:visible!important;isolation:auto!important;background:transparent!important;box-shadow:none!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage::before{display:none!important;content:none!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important;mix-blend-mode:screen!important;isolation:auto!important;background:transparent!important;filter:brightness(1.05) drop-shadow(0 8px 12px #00173555)!important}
+@media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(12px,2vh,20px)!important;right:8px!important;transform:none!important;width:min(145px,36vw)!important;height:min(110px,15vh)!important}}

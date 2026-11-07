@@ -1,0 +1,13 @@
+/* Keep account settings in the current page and above decorative artwork. */
+body:has(#modal.open){overflow:hidden}
+#modal.modal.open{z-index:1000!important;padding:12px;background:rgba(4,18,42,.94);backdrop-filter:blur(8px)}
+#modal.modal.open .dialog:has(.user-admin),
+#modal.modal.open .dialog:has(.user-admin-edit){width:min(620px,calc(100vw - 24px));max-height:92vh;max-height:92dvh;overflow:auto;overscroll-behavior:contain}
+#modal.modal.open .dialog-body{min-width:0}
+@media(max-width:600px){
+ #modal.modal.open{align-items:center;padding:8px}
+ #modal.modal.open .dialog:has(.user-admin),
+ #modal.modal.open .dialog:has(.user-admin-edit){width:calc(100vw - 16px);max-height:94vh;max-height:94dvh}
+ #modal.modal.open .user-admin-fields{grid-template-columns:1fr}
+ #modal.modal.open .user-admin-create{padding:12px}
+}

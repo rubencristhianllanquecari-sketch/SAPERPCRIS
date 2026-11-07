@@ -1,4 +1,12 @@
 
+/* Video retirado de la portada por solicitud del usuario. */
+body:has(#homeView:not([hidden])) #appShell>main #homeView .home-bearing-stage{display:none!important}
+body:has(#homeView:not([hidden])) #appShell>main #homeView .home-bearing-stage video.home-bearing-video{display:none!important}
+
+
+body:has(#homeView:not([hidden])) .home-bearing-stage{display:none!important}
+body:has(#homeView:not([hidden])) .home-bearing-video{display:none!important}
+
 /* Keep the full video frame visible beside the bearing collection. */
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{position:fixed!important;z-index:2!important;right:clamp(22px,3vw,48px)!important;bottom:clamp(16px,3vh,36px)!important;top:auto!important;left:auto!important;width:min(32vw,440px)!important;height:min(28vh,240px)!important;overflow:visible!important;display:grid!important;place-items:center!important;transform:none!important;background:transparent!important;box-shadow:none!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage::before{display:none!important;content:none!important}

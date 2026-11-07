@@ -510,3 +510,9 @@ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-v
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:50%!important;bottom:auto!important;right:clamp(18px,4vw,60px)!important;transform:translateY(-50%)!important;width:min(230px,19vw)!important;height:min(170px,20vh)!important;background:transparent!important;overflow:hidden!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{width:100%!important;height:100%!important;object-fit:contain!important;background:transparent!important;mix-blend-mode:screen!important;filter:drop-shadow(0 8px 12px #00173555)!important}
 @media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(28px,8vh,72px)!important;right:10px!important;transform:none!important;width:min(140px,34vw)!important;height:min(105px,14vh)!important}}
+
+
+/* Corrige la composición del video sobre el fondo de inicio. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{isolation:auto!important;overflow:visible!important;background:transparent!important;box-shadow:none!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage::before{display:none!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{display:block!important;isolation:auto!important;opacity:1!important;mix-blend-mode:screen!important;background:transparent!important;object-fit:contain!important;filter:drop-shadow(0 8px 12px #00173555)!important}

@@ -504,3 +504,9 @@ body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-v
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(10px,2.5vh,24px)!important;transform:none!important;right:clamp(14px,4vw,56px)!important;width:min(250px,20vw)!important;height:min(185px,22vh)!important;background:transparent!important}
 body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{background:transparent!important;mix-blend-mode:multiply!important;object-fit:contain}
 @media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{bottom:8px!important;right:8px!important;width:min(145px,35vw)!important;height:min(110px,15vh)!important}}
+
+
+/* Presenta el rodamiento animado más arriba y difumina el negro del video sobre el fondo azul. */
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:50%!important;bottom:auto!important;right:clamp(18px,4vw,60px)!important;transform:translateY(-50%)!important;width:min(230px,19vw)!important;height:min(170px,20vh)!important;background:transparent!important;overflow:hidden!important}
+body:has(#homeView:not([hidden])) .home-view .home-bearing-stage .home-bearing-video{width:100%!important;height:100%!important;object-fit:contain!important;background:transparent!important;mix-blend-mode:screen!important;filter:drop-shadow(0 8px 12px #00173555)!important}
+@media(max-width:760px){body:has(#homeView:not([hidden])) .home-view .home-bearing-stage{top:auto!important;bottom:clamp(28px,8vh,72px)!important;right:10px!important;transform:none!important;width:min(140px,34vw)!important;height:min(105px,14vh)!important}}
